@@ -1,0 +1,13 @@
+id: drugdeliverycart
+name: DrugDeliveryCart
+version: 0.1.0
+author: xiao
+icon: app.png
+desc: 这是送药小车的逻辑，包括了开头的数字识别、十字路口是否转弯，以及巡线，到那时没有写停车的情况
+files:
+  - constants.py
+  - main.py
+  - MyGetPixel.py
+  - MyOpenCV.py
+  - MySendThread.py
+  - MyUI.py

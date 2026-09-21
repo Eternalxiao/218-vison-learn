@@ -1,0 +1,13 @@
+files:
+  - constants.py
+  - look_for_data.py
+  - main.py
+  - my_game.py
+  - my_utils.py
+  - topic_request.py
+id: e_three_four
+name: sanziqi
+version: 1.0.0
+author: xiaomo
+icon: ''
+desc: 这是三子棋的颜色识别，非常简陋

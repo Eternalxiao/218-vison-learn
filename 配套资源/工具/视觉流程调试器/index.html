@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TILearn 视觉流程调试器</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">TILearn · OpenCV.js 离线工具</p>
+      <h1>视觉流程调试器</h1>
+      <p>从原图开始观察每一步，不再只盯着最终结果试参数。</p>
+    </div>
+    <div id="status" class="status loading">正在加载本地 OpenCV.js…</div>
+  </header>
+
+  <main>
+    <aside class="panel controls">
+      <section>
+        <h2>1. 输入图片</h2>
+        <label class="file-button">选择图片<input id="file-input" type="file" accept="image/*"></label>
+        <button id="sample-button" type="button">生成内置样例</button>
+      </section>
+
+      <section>
+        <h2>2. 颜色与阈值</h2>
+        <label>颜色空间
+          <select id="color-space">
+            <option value="hsv">HSV</option>
+            <option value="lab">LAB</option>
+            <option value="gray">Gray</option>
+          </select>
+        </label>
+        <label>阈值方式
+          <select id="threshold-mode">
+            <option value="ranges">多范围</option>
+            <option value="fixed">固定阈值</option>
+            <option value="otsu">Otsu</option>
+            <option value="adaptive">自适应阈值</option>
+          </select>
+        </label>
+        <div id="ranges-panel">
+          <div class="row-title"><span id="range-hint">H / S / V</span><button id="add-range" type="button">增加范围</button></div>
+          <div id="ranges"></div>
+        </div>
+        <label id="fixed-panel">固定阈值 <input id="fixed-threshold" type="number" min="0" max="255" value="127"></label>
+        <div id="adaptive-panel" class="two-columns">
+          <label>邻域大小 <input id="adaptive-block" type="number" min="3" step="2" value="31"></label>
+          <label>C <input id="adaptive-c" type="number" value="5"></label>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. 滤波与形态学</h2>
+        <label>滤波
+          <select id="filter-mode">
+            <option value="none">不滤波</option>
+            <option value="gaussian" selected>高斯滤波</option>
+            <option value="median">中值滤波</option>
+          </select>
+        </label>
+        <div class="two-columns">
+          <label>滤波核 <input id="filter-kernel" type="number" min="1" step="2" value="3"></label>
+          <label>形态学核 <input id="morph-kernel" type="number" min="1" step="2" value="3"></label>
+          <label>腐蚀次数 <input id="erode-iterations" type="number" min="0" value="0"></label>
+          <label>膨胀次数 <input id="dilate-iterations" type="number" min="0" value="0"></label>
+          <label>开运算次数 <input id="open-iterations" type="number" min="0" value="1"></label>
+          <label>闭运算次数 <input id="close-iterations" type="number" min="0" value="1"></label>
+          <label>最小轮廓面积 <input id="min-area" type="number" min="0" value="100"></label>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. 保存参数</h2>
+        <div class="button-grid">
+          <button id="export-config" type="button">导出 JSON</button>
+          <label class="file-button secondary">导入 JSON<input id="import-config" type="file" accept="application/json,.json"></label>
+          <button id="copy-thresholds" type="button">复制 MaixPy 阈值</button>
+        </div>
+        <pre id="message">等待图片…</pre>
+      </section>
+    </aside>
+
+    <section class="workspace">
+      <canvas id="source-canvas" class="source-hidden"></canvas>
+      <div id="stage-grid" class="stage-grid"></div>
+    </section>
+  </main>
+
+  <template id="stage-template">
+    <article class="stage-card">
+      <div class="stage-heading"><h3></h3><button type="button">下载</button></div>
+      <canvas></canvas>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+  <script async src="opencv.js" onload="onOpenCvScriptLoaded()"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">四种基础形态学操作的作用与代价</title>
+  <desc id="desc">白色前景在黑色背景上分别经历腐蚀、膨胀、开运算和闭运算。每张卡片使用相同尺寸的输入输出区域，并列出适合处理的现象与可能损失的信息。</desc>
+  <style>
+    text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+    .title { font-size: 26px; font-weight: 700; fill: #152238; }
+    .subtitle { font-size: 15px; fill: #52627a; }
+    .name { font-size: 19px; font-weight: 700; fill: #152238; }
+    .text { font-size: 14px; fill: #52627a; }
+    .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+    .panel { fill: #111827; }
+    .arrow { stroke: #64748b; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="620" fill="#f8fafc"/>
+  <text x="48" y="48" class="title">先约定白色前景，再比较每种操作改变了什么</text>
+  <text x="48" y="78" class="subtitle">所有示意都以黑色背景、白色前景为约定；核越大或重复次数越多，改变通常越明显。</text>
+
+  <g transform="translate(48 112)">
+    <rect class="card" width="540" height="224" rx="14"/>
+    <text x="22" y="34" class="name">腐蚀：缩小白色前景</text>
+    <rect class="panel" x="22" y="55" width="210" height="104" rx="6"/>
+    <rect x="72" y="82" width="110" height="50" rx="2" fill="#ffffff"/>
+    <circle cx="50" cy="83" r="5" fill="#ffffff"/>
+    <circle cx="205" cy="139" r="5" fill="#ffffff"/>
+    <path class="arrow" d="M247 107 H285"/>
+    <rect class="panel" x="308" y="55" width="210" height="104" rx="6"/>
+    <rect x="321" y="68" width="184" height="78" fill="none" stroke="#475569" stroke-dasharray="5 5"/>
+    <rect x="365" y="91" width="96" height="32" rx="2" fill="#ffffff"/>
+    <text x="22" y="185" class="text">适合：小白点、白色毛刺</text>
+    <text x="286" y="185" class="text">
+      <tspan x="286" dy="0">代价：细线和窄连接</tspan>
+      <tspan x="286" dy="19">可能断开</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(612 112)">
+    <rect class="card" width="540" height="224" rx="14"/>
+    <text x="22" y="34" class="name">膨胀：扩大白色前景</text>
+    <rect class="panel" x="22" y="55" width="210" height="104" rx="6"/>
+    <rect x="61" y="89" width="55" height="36" fill="#ffffff"/>
+    <rect x="139" y="89" width="55" height="36" fill="#ffffff"/>
+    <path class="arrow" d="M247 107 H285"/>
+    <rect class="panel" x="308" y="55" width="210" height="104" rx="6"/>
+    <rect x="342" y="80" width="142" height="54" fill="#ffffff"/>
+    <text x="22" y="185" class="text">适合：细黑缝、轻微断裂</text>
+    <text x="286" y="185" class="text">
+      <tspan x="286" dy="0">代价：相邻目标</tspan>
+      <tspan x="286" dy="19">可能粘成一个候选</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(48 368)">
+    <rect class="card" width="540" height="224" rx="14"/>
+    <text x="22" y="34" class="name">开运算：先腐蚀，再膨胀</text>
+    <rect class="panel" x="22" y="55" width="210" height="104" rx="6"/>
+    <rect x="72" y="82" width="110" height="50" rx="2" fill="#ffffff"/>
+    <circle cx="50" cy="83" r="5" fill="#ffffff"/>
+    <circle cx="205" cy="139" r="5" fill="#ffffff"/>
+    <path class="arrow" d="M247 107 H285"/>
+    <rect class="panel" x="308" y="55" width="210" height="104" rx="6"/>
+    <rect x="358" y="82" width="110" height="50" rx="2" fill="#ffffff"/>
+    <text x="22" y="185" class="text">
+      <tspan x="22" dy="0">适合：主体外的</tspan>
+      <tspan x="22" dy="19">零散白噪声</tspan>
+    </text>
+    <text x="286" y="185" class="text">
+      <tspan x="286" dy="0">代价：很细的小目标</tspan>
+      <tspan x="286" dy="19">可能被删除</tspan>
+    </text>
+  </g>
+
+  <g transform="translate(612 368)">
+    <rect class="card" width="540" height="224" rx="14"/>
+    <text x="22" y="34" class="name">闭运算：先膨胀，再腐蚀</text>
+    <rect class="panel" x="22" y="55" width="210" height="104" rx="6"/>
+    <rect x="62" y="80" width="130" height="54" fill="#ffffff"/>
+    <circle cx="127" cy="107" r="10" fill="#111827"/>
+    <path class="arrow" d="M247 107 H285"/>
+    <rect class="panel" x="308" y="55" width="210" height="104" rx="6"/>
+    <rect x="348" y="80" width="130" height="54" fill="#ffffff"/>
+    <text x="22" y="185" class="text">
+      <tspan x="22" dy="0">适合：主体内的</tspan>
+      <tspan x="22" dy="19">小黑洞或细裂缝</tspan>
+    </text>
+    <text x="286" y="185" class="text">
+      <tspan x="286" dy="0">代价：必要分隔线</tspan>
+      <tspan x="286" dy="19">可能被填掉</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,219 @@
+{
+  "_comment_camera": "摄像头: lens_corr畸变矫正; exposure/gain=0为自动, 暗场手动拉高; luma/constrast/saturation[0,100]",
+  "camera": {
+    "width": 640,
+    "height": 448,
+    "contrast": 80,
+    "luma": 50,
+    "saturation": 50,
+    "skip_frames": 30,
+    "lens_corr": 1.4,
+    "exposure": 0,
+    "gain": 0
+  },
+  "_comment_calibration": "统一仿射标定: x=offset_x + x_sign*(v-center_v)/px_per_mm, y=offset_y + y_sign*(u-center_u)/px_per_mm; 轴交换隐含90度旋转; x_sign/y_sign=±1符号翻转(Offset页X±/Y±按钮,PNT校验决定)",
+  "calibration": {
+    "px_per_mm": 2.0,
+    "pixel_center": [
+      320,
+      224
+    ],
+    "robot_offset": [
+      271.0,
+      221.0
+    ],
+    "x_sign": -1,
+    "y_sign": 1
+  },
+  "_comment_mechanical": "机械轴参数: feed_rate进给速度, z轴高度, 舵机",
+  "mechanical": {
+    "feed_rate": 3000,
+    "z_up": -1.0,
+    "z_down": 0.0,
+    "e_home": 90.0
+  },
+  "_comment_roi": "Stage1找A4纸: paper_polarity=dark(黑纸)/light(白纸)/auto(自动), 现场可切换",
+  "roi": {
+    "enabled": true,
+    "shrink": 3,
+    "min_area": 15000,
+    "max_area": 280000,
+    "aspect_ratio": 1.414,
+    "aspect_tol": 0.35,
+    "morph_kernel": 13,
+    "morph_iter": 3,
+    "binary_thresh": 100,
+    "min_vertices": 4,
+    "max_vertices": 6,
+    "min_solidity": 0.75,
+    "min_fill_ratio": 0.6,
+    "min_size": 32,
+    "align": 4,
+    "paper_polarity": "auto"
+  },
+  "_comment_split": "A4纸沿长边对半分: piece_side=碎片所在半区(left/right/top/bottom)",
+  "split": {
+    "enabled": true,
+    "piece_side": "right",
+    "gap": 4
+  },
+  "_comment_filter": "碎片过滤: max_aspect_ratio杀线状误检",
+  "filter": {
+    "max_aspect_ratio": 5.0,
+    "edge_margin_auto": true
+  },
+  "_comment_preprocess": "滤波去噪参数(二值化之前)",
+  "preprocess": {
+    "smooth_kernel": 3,
+    "gaussian_kernel": 5,
+    "morph_kernel_size": 3,
+    "morph_close_iter": 2,
+    "morph_dilate_iter": 2,
+    "morph_erode_iter": 2,
+    "clahe_enabled": false,
+    "clahe_clip": 2.0,
+    "clahe_grid": 8
+  },
+  "_comment_binary": "二值化: mode=otsu/fixed/hsv(彩色)/adaptive(光照不均), invert=碎片比纸暗时True",
+  "binary": {
+    "mode": "otsu",
+    "invert": false,
+    "fixed_threshold": 127,
+    "hsv_lower": [
+      0,
+      50,
+      50
+    ],
+    "hsv_upper": [
+      10,
+      255,
+      255
+    ],
+    "adaptive_block": 31,
+    "adaptive_C": 5
+  },
+  "_comment_contour": "轮廓提取: min_area过滤噪点, epsilon逼近精度",
+  "contour": {
+    "min_area": 1000,
+    "epsilon": 0.02,
+    "max_vertices": 5
+  },
+  "_comment_matching": "模板匹配容差",
+  "matching": {
+    "area_tol": 0.35,
+    "edge_tol": 0.35,
+    "angle_tol": 5.0,
+    "fallback_min": 0.55
+  },
+  "_comment_display": "可视化参数",
+  "display": {
+    "global_rotation_offset": 0.0,
+    "target_rect_mm": [
+      100,
+      60
+    ]
+  },
+  "_comment_templates": "碎片模板: edges为边长px列表, target_offset_mm为拼图区内偏移",
+  "templates": {
+    "A": {
+      "_desc": "碎片 S0 P0 右下角三角形",
+      "n_vertices": 3,
+      "area": 9796,
+      "edges": [
+        158.1,
+        121.0,
+        199.9
+      ],
+      "right_angles": 1,
+      "target_theta": 128.7,
+      "target_offset_mm": [
+        -12.1,
+        -40.5
+      ]
+    },
+    "B": {
+      "_desc": "碎片 S1 P1 左上角四边形",
+      "n_vertices": 4,
+      "area": 8210,
+      "edges": [
+        59.0,
+        152.9,
+        60.0,
+        198.1
+      ],
+      "right_angles": 1,
+      "target_theta": 88.3,
+      "target_offset_mm": [
+        30.8,
+        1.6
+      ]
+    },
+    "C": {
+      "_desc": "碎片 S2 P2 中间楔形",
+      "n_vertices": 4,
+      "area": 4421,
+      "edges": [
+        20.1,
+        74.5,
+        96.0,
+        149.0
+      ],
+      "right_angles": 0,
+      "target_theta": 96.6,
+      "target_offset_mm": [
+        2.4,
+        7.6
+      ]
+    },
+    "D": {
+      "_desc": "碎片 S3 P3 小四边形",
+      "n_vertices": 4,
+      "area": 1833,
+      "edges": [
+        39.0,
+        38.0,
+        37.8,
+        69.9
+      ],
+      "right_angles": 1,
+      "target_theta": 76.8,
+      "target_offset_mm": [
+        -21.2,
+        31.3
+      ]
+    }
+  },
+  "_comment_serial": "串口: enabled=false纯仿真; block_delay_ms=BLK块间延时(降发送频率防爆缓冲,Offset页可调); pace_by_time=true切换为按执行时间滴灌(超安全但慢); time_margin/min_block_ms仅滴灌模式用",
+  "serial": {
+    "device": "/dev/ttyS0",
+    "baudrate": 115200,
+    "enabled": true,
+    "block_delay_ms": 500,
+    "pace_by_time": false,
+    "time_margin": 1.5,
+    "min_block_ms": 400,
+    "servo_ms_per_deg": 5
+  },
+  "_comment_start": "start流程: wait_uncover=先按Start再遮挡,揭开自动跑; arm_frames=连续K帧检出碎片判定揭开; settle_frames=触发后稳定倒计时; piece_interval_s=GAP片间间隔(Offset页可调); second_pass_interval_s=二次补捡片间额外间隔; retry_detects=0匹配重试次数",
+  "start": {
+    "wait_uncover": true,
+    "arm_frames": 5,
+    "min_pieces": 1,
+    "settle_frames": 10,
+    "piece_interval_s": 8,
+    "second_pass_interval_s": 8,
+    "retry_detects": 3
+  },
+  "_comment_alert": "完成声光提示: deadline_s=揭开后超过X秒强制提示(规则要求2分钟内); finish_settle_s=最后发送完等机械臂停稳再复查; duration_s=提示闪烁时长; LED=B3照明灯; wav=喇叭文件",
+  "alert": {
+    "enabled": true,
+    "deadline_s": 115,
+    "finish_settle_s": 18,
+    "second_pass": true,
+    "second_pass_settle_s": 6,
+    "duration_s": 2,
+    "led_enabled": true,
+    "wav": "alert.wav",
+    "volume": 95
+  }
+}

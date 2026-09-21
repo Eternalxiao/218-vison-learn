@@ -1,0 +1,14 @@
+id: laseltrack
+name: laseltrack
+version: 0.1.3
+author: xiaomo
+icon: app.png
+desc: 目标追踪，封装版，发送帧头帧尾
+files:
+  - constants.py
+  - look_for_data.py
+  - main.py
+  - my_utils.py
+  - MyGetPixel.py
+  - MyOpenCV.py
+  - MyUI.py

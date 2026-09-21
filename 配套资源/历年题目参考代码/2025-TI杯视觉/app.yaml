@@ -1,0 +1,13 @@
+id: ticup1
+name: ticup1
+version: 0.0.1
+author: xiao
+icon: app.png
+desc: 没有数字识别部分，提高题只有重叠部分检测
+files:
+  - calibration_manager.py
+  - constants.py
+  - main.py
+  - MyUART.py
+  - MyUI.py
+  - OverRectLapDetector.py

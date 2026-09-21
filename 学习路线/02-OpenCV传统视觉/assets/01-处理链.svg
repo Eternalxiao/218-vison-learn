@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">从原图到可判断候选的传统视觉处理链</title>
+  <desc id="desc">原图依次经过可选的滤波、二值化、可选的形态学和轮廓筛选。每张卡片说明当前步骤解决的问题和检查重点。</desc>
+  <style>
+    text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+    .title { font-size: 26px; font-weight: 700; fill: #152238; }
+    .label { font-size: 18px; font-weight: 700; fill: #152238; }
+    .note { font-size: 14px; fill: #52627a; }
+    .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+    .panel { fill: #111827; }
+    .arrow { stroke: #64748b; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="420" fill="#f8fafc"/>
+  <text x="36" y="48" class="title">从左向右找第一张出错的中间图</text>
+  <text x="36" y="76" class="note">箭头表示数据变化，不表示每一步都必须使用。</text>
+
+  <g transform="translate(36 104)">
+    <rect class="card" width="200" height="232" rx="14"/>
+    <text x="16" y="31" class="label">1. 原图</text>
+    <text x="16" y="55" class="note">
+      <tspan x="16" dy="0">目标、背景与噪声</tspan>
+      <tspan x="16" dy="20">仍混在同一幅图里</tspan>
+    </text>
+    <rect class="panel" x="16" y="91" width="168" height="94" rx="7"/>
+    <circle cx="42" cy="114" r="3" fill="#f8fafc"/>
+    <circle cx="160" cy="119" r="3" fill="#f8fafc"/>
+    <circle cx="54" cy="167" r="2" fill="#f8fafc"/>
+    <circle cx="151" cy="162" r="3" fill="#f8fafc"/>
+    <path d="M72 162 L100 116 L129 162 Z" fill="#fb7185"/>
+    <text x="16" y="207" class="note">保存原图，作为对照基准</text>
+  </g>
+
+  <path class="arrow" d="M242 220 H262"/>
+
+  <g transform="translate(268 104)">
+    <rect class="card" width="200" height="232" rx="14"/>
+    <text x="16" y="31" class="label">2. 滤波</text>
+    <text x="16" y="55" class="note">
+      <tspan x="16" dy="0">减弱像素级波动</tspan>
+      <tspan x="16" dy="20">保留仍需辨认的边缘</tspan>
+    </text>
+    <rect class="panel" x="16" y="91" width="168" height="94" rx="7"/>
+    <circle cx="44" cy="115" r="1.5" fill="#94a3b8"/>
+    <circle cx="157" cy="120" r="1.5" fill="#94a3b8"/>
+    <path d="M72 162 L100 116 L129 162 Z" fill="#fb7185" opacity=".86"/>
+    <text x="16" y="207" class="note">
+      <tspan x="16" dy="0">不能修正颜色空间</tspan>
+      <tspan x="16" dy="19">和阈值范围</tspan>
+    </text>
+  </g>
+
+  <path class="arrow" d="M474 220 H494"/>
+
+  <g transform="translate(500 104)">
+    <rect class="card" width="200" height="232" rx="14"/>
+    <text x="16" y="31" class="label">3. 二值化</text>
+    <text x="16" y="55" class="note">
+      <tspan x="16" dy="0">把候选像素</tspan>
+      <tspan x="16" dy="20">变成白色前景</tspan>
+    </text>
+    <rect class="panel" x="16" y="91" width="168" height="94" rx="7"/>
+    <path d="M72 162 L100 116 L129 162 Z" fill="#ffffff"/>
+    <circle cx="42" cy="117" r="3" fill="#ffffff"/>
+    <circle cx="159" cy="163" r="3" fill="#ffffff"/>
+    <text x="16" y="207" class="note">
+      <tspan x="16" dy="0">先检查目标是否</tspan>
+      <tspan x="16" dy="19">完整出现</tspan>
+    </text>
+  </g>
+
+  <path class="arrow" d="M706 220 H726"/>
+
+  <g transform="translate(732 104)">
+    <rect class="card" width="200" height="232" rx="14"/>
+    <text x="16" y="31" class="label">4. 形态学</text>
+    <text x="16" y="55" class="note">
+      <tspan x="16" dy="0">修补已经看见的</tspan>
+      <tspan x="16" dy="20">散点、孔洞或断裂</tspan>
+    </text>
+    <rect class="panel" x="16" y="91" width="168" height="94" rx="7"/>
+    <path d="M72 162 L100 116 L129 162 Z" fill="#ffffff"/>
+    <path d="M93 144 L100 132 L107 144 Z" fill="#111827"/>
+    <text x="16" y="207" class="note">
+      <tspan x="16" dy="0">会改变面积、边界</tspan>
+      <tspan x="16" dy="19">和目标间隔</tspan>
+    </text>
+  </g>
+
+  <path class="arrow" d="M938 220 H958"/>
+
+  <g transform="translate(964 104)">
+    <rect class="card" width="200" height="232" rx="14"/>
+    <text x="16" y="31" class="label">5. 轮廓筛选</text>
+    <text x="16" y="55" class="note">
+      <tspan x="16" dy="0">把连通区域</tspan>
+      <tspan x="16" dy="20">变成可检查的候选</tspan>
+    </text>
+    <rect class="panel" x="16" y="91" width="168" height="94" rx="7"/>
+    <path d="M72 162 L100 116 L129 162 Z" fill="none" stroke="#34d399" stroke-width="3"/>
+    <circle cx="100" cy="147" r="3" fill="#34d399"/>
+    <text x="16" y="207" class="note">
+      <tspan x="16" dy="0">按面积、位置、形状</tspan>
+      <tspan x="16" dy="19">和方向筛选</tspan>
+    </text>
+  </g>
+
+  <text x="36" y="382" class="note">后面的步骤不能找回前面已经丢失的目标；看到第一处错误就回到对应阶段。</text>
+</svg>

@@ -1,0 +1,9 @@
+# Paths are relative to this YAML file unless an absolute path is used.
+path: dataset
+train: images/train
+val: images/val
+test: images/test
+
+# Keep this order identical to classes.txt and the exported labels.
+names:
+  0: target

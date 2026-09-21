@@ -1,0 +1,5 @@
+# PC-side examples. MaixCAM Pro uses the packages bundled with MaixPy.
+numpy>=1.24
+opencv-python>=4.8
+Pillow>=10
+ultralytics>=8.3

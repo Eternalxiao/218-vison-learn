@@ -1,0 +1,30 @@
+{
+    "solver": {
+        "edge_length_tol_mm": 1.5,
+        "edge_length_tol_rel": 0.03,
+        "min_partial_ratio": 0.25,
+        "max_nodes": 20000,
+        "max_seconds": 8.0,
+        "max_candidates_per_step": 50,
+        "search_overlap_tol_mm2": 2.0,
+        "bbox_size_tolerance": 0.15,
+        "gn_max_iter": 20,
+        "gn_tol": 1e-7,
+        "overlap_eps_mm2": 0.5,
+        "separation_clearance_mm": 0.2,
+        "max_sep_iterations": 80,
+        "compact_step_start_mm": 2.0,
+        "compact_step_min_mm": 0.2,
+        "w_gap": 0.52,
+        "w_overlap": 3.0,
+        "w_aspect": 0.16,
+        "w_size": 0.16,
+        "w_area": 0.16,
+        "w_disconnected": 0.015,
+        "target_long_mm": 297.0,
+        "target_short_mm": 210.0,
+        "pieces_only_mode": false,
+        "pieces_only_fallback": true,
+        "fallback_bbox_tol": 0.8
+    }
+}

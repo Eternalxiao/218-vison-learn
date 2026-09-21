@@ -1,0 +1,15 @@
+id: hqybs
+name: hqybs
+version: 0.0.1
+author: xiao
+icon: ''
+desc: huqiyi的毕设程序
+files:
+  - BlackAndWhiteChess.mud
+  - constants.py
+  - gcode_generator.py
+  - look_for_data.py
+  - main.py
+  - my_game.py
+  - my_utils.py
+  - topic_request.py

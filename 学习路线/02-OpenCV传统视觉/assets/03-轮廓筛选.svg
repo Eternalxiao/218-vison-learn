@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">从轮廓候选到任务所需特征</title>
+  <desc id="desc">二值图中的白色区域产生多个候选，候选依次接受面积、边界、几何和方向检查，最后只输出任务需要的特征。</desc>
+  <style>
+    text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+    .title { font-size: 26px; font-weight: 700; fill: #152238; }
+    .subtitle { font-size: 15px; fill: #52627a; }
+    .label { font-size: 19px; font-weight: 700; fill: #152238; }
+    .note { font-size: 15px; fill: #52627a; }
+    .on-dark { font-size: 14px; fill: #ffffff; dominant-baseline: middle; }
+    .middle { dominant-baseline: middle; }
+    .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+    .arrow { stroke: #64748b; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="430" fill="#f8fafc"/>
+  <text x="48" y="48" class="title">轮廓只是候选，判断条件必须来自任务</text>
+  <text x="48" y="78" class="subtitle">同样有四个顶点的区域，可能是目标，也可能是噪声或边缘残片；单一特征不能代替完整判断。</text>
+
+  <g transform="translate(48 116)">
+    <rect class="card" width="330" height="258" rx="14"/>
+    <text x="22" y="36" class="label">1. 给所有候选编号</text>
+    <rect x="22" y="58" width="286" height="150" rx="6" fill="#111827"/>
+    <circle cx="66" cy="98" r="7" fill="#ffffff"/>
+    <text x="84" y="98" class="on-dark">① 面积很小</text>
+    <rect x="22" y="128" width="53" height="44" fill="#ffffff"/>
+    <text x="84" y="150" class="on-dark">② 接触边界</text>
+    <path d="M188 181 L215 88 L257 88 L286 181 Z" fill="#ffffff"/>
+    <text x="196" y="195" class="on-dark">③ 可能目标</text>
+    <text x="22" y="235" class="note">先画编号，不凭第一眼挑选。</text>
+  </g>
+
+  <path class="arrow" d="M392 245 H448"/>
+
+  <g transform="translate(468 116)">
+    <rect class="card" width="330" height="258" rx="14"/>
+    <text x="22" y="36" class="label">2. 按任务逐项检查</text>
+    <circle cx="42" cy="82" r="12" fill="#dbeafe"/>
+    <text x="66" y="82" class="note middle">面积范围是否合理？</text>
+    <circle cx="42" cy="124" r="12" fill="#dbeafe"/>
+    <text x="66" y="124" class="note middle">任务是否允许目标贴边？</text>
+    <circle cx="42" cy="166" r="12" fill="#dbeafe"/>
+    <text x="66" y="166" class="note middle">长宽比、凸性和方向是否符合？</text>
+    <circle cx="42" cy="208" r="12" fill="#dbeafe"/>
+    <text x="66" y="208" class="note middle">顶点数或圆度是否符合？</text>
+    <text x="22" y="235" class="note">条件来自目标定义，不来自函数名。</text>
+  </g>
+
+  <path class="arrow" d="M812 245 H868"/>
+
+  <g transform="translate(888 116)">
+    <rect class="card" width="264" height="258" rx="14"/>
+    <text x="22" y="36" class="label">3. 输出所需特征</text>
+    <path d="M66 191 L100 82 L164 82 L198 191 Z" fill="none" stroke="#34d399" stroke-width="4"/>
+    <circle cx="132" cy="137" r="5" fill="#fb7185"/>
+    <text x="22" y="223" class="note">
+      <tspan x="22" dy="0">中心、角点、尺寸、方向</tspan>
+      <tspan x="22" dy="21">只输出后续真正需要的量</tspan>
+    </text>
+  </g>
+</svg>

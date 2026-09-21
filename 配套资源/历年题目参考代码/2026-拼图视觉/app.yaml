@@ -1,0 +1,18 @@
+id: q1q2640shixian
+name: q1q2640shixian
+version: 0.0.1
+author: xiaoF
+icon: app.png
+desc: Q1Q2的完整实现
+files:
+  - alert_io.py
+  - alert.wav
+  - calib.py
+  - config.json
+  - debug_calibration.py
+  - gcode_generator.py
+  - main.py
+  - my_utils.py
+  - solver.py
+  - ui.py
+  - vision.py
